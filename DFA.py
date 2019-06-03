@@ -15,7 +15,6 @@ class DFA:
         self.final_states = final_states
         self.current_state = start_state
         self.output = ''
-        return
 
     def transition_to_state_with_input(self, letter):
         if ((self.current_state, letter) not in self.delta_function.keys()):
@@ -41,4 +40,3 @@ class DFA:
             self.transition_to_state_with_input(letter)
             continue
         return self.in_accept_state()
-    pass
