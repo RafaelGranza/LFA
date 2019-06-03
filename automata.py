@@ -8,14 +8,26 @@ class DFA:
         self.states = states
 
     def processInput(self, word):
-        print(self.findInitial())
-        initialState = self.states[self.findInitial()]
-        print(self.states[initialState.process(word)].process(word))
-        self.states[initialState.process(word)].process(word)
+        initialState = self.findInitial()
+        output = []
+        initialState.process(word)
+        return output
             
-
     def findInitial(self):
         for state in self.states:
-            if(state.getMode() == -1):
-                return state.getId()
+            if(state.getMode() == 'initial'):
+                return state
         return None
+
+    def __str__(self):
+        s = 'Automata\n\n'
+        for state in self.states:
+            if state.getMode() == 'final':
+                final = (str(state.getId())+'|')        
+            else:
+                s += (str(state.getId())+
+                      '->'+
+                      str(state.getTransition().getGoalState())+
+                      ':'+
+                      str(state.getTransition().getCharacter())+'\n')        
+        return s+final

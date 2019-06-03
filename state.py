@@ -1,21 +1,19 @@
 from transition import *
 
 class State:
-    def __init__(self, id, mode = 0):
+    def __init__(self, id, mode = ''):
         self.id = id
         self.mode = mode
-        self.transitions = []
+        self.transition = None
 
     def setTransition(self, transition):
-        self.transitions.append(transition)
+        self.transition = transition
 
     def process(self, character):
-        proceed = None
-        for transition in self.transitions:
-            proceed = transition.process(character)
-            if proceed:
-                return proceed
-        if not proceed:
+        proceed = self.transition.process(character)
+        if proceed:
+            return proceed
+        elif proceed == None and self.getMode() == 'final':
             print("Saida = {}".format(character))
 
     def getMode(self):
@@ -24,6 +22,12 @@ class State:
     def getId(self):
         return self.id
 
-    def getTransitions(self):
-        return self.transitions
+    def getTransition(self):
+        if self.transition:
+            return self.transition
+        else:
+            return self.getId()
+
+    def __str__(self):
+        return str(self.getId())+':'+self.getMode()
     

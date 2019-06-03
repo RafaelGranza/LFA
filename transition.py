@@ -1,15 +1,16 @@
 class Transition:
-    def __init__(self):
-        self.startState = dict()
-
-    def defineTransition(self, startState, goalState, character):
-        self.startState[character] = goalState
+    def __init__(self, goalState, character):
+        self.goalState = goalState
+        self.character = character
 
     def process(self, character):
-        if character in self.startState:
-            return self.startState.get(character)
+        if character == self.character:
+            return self.goalState
         else:
-            return None
+            return self
 
-    def getCharacters(self):
-        return self.startState.keys
+    def getGoalState(self):
+        return self.goalState.getId()
+
+    def getCharacter(self):
+        return self.character
