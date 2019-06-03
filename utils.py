@@ -1,5 +1,6 @@
 def read_quintuple_from_data(file):
         f = open(file, "r")
+        name = f.readline().replace('\n','')
         alphabet = set([symbol for symbol in f.readline().replace('\n','').split()])
         states = set([state for state in f.readline().replace('\n','').split()])
         number_transitions = int(f.readline())
@@ -12,4 +13,4 @@ def read_quintuple_from_data(file):
         final_states = set([state for state in f.readline().split()])
         f.close()
 
-        return alphabet, states, delta_function, start_state, final_states
+        return name, alphabet, states, delta_function, start_state, final_states
