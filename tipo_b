@@ -1,0 +1,13 @@
+b
+b L B P V @ &
+q0 q1t q1c q1m
+7
+q0->q1t:b
+q1t->q1c:L
+q1t->q1c:B
+q1t->q1c:P
+q1t->q1c:V
+q1c->q1m:@
+q1c->q1m:&
+q0
+q1m

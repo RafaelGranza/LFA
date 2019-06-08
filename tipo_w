@@ -1,0 +1,13 @@
+w
+w B P V A ! #
+q0 q2t q2c q2m
+7
+q0->q2t:w
+q2t->q2c:A
+q2t->q2c:B
+q2t->q2c:P
+q2t->q2c:V
+q2c->q2m:!
+q2c->q2m:#
+q0
+q2m
