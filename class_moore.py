@@ -1,4 +1,4 @@
-class DFA:
+class Moore:
 
     current_state = None
     current_letter = None
@@ -10,7 +10,9 @@ class DFA:
                  states,
                  delta_function,
                  start_state,
-                 final_states):
+                 final_states,
+                 output_alphabet,
+                 output_funtion):
         self.name = name
         self.alphabet = alphabet
         self.states = states
@@ -18,29 +20,38 @@ class DFA:
         self.start_state = start_state
         self.final_states = final_states
         self.current_state = start_state
+        self.output_alphabet = output_alphabet
+        self.output_funtion = output_funtion
         self.output = ''
+
+    def __len__(self):
+        return len(self.states)
+
+    def __str__(self):
+        return self.output
 
     def transition_to_state_with_input(self, letter):
         if self.valid:
             if ((self.current_state, letter) not in self.delta_function.keys()):
                 self.valid = False
                 return
+            self.output += self.output_funtion[self.current_state]
             self.current_state = self.delta_function[(self.current_state, letter)]
             self.current_letter = letter
-            self.output += letter
         else:
             return
     
     def in_accept_state(self):
-        return self.current_state in self.final_states and self.valid
+        if(self.current_state in self.final_states and self.valid):
+            self.output += self.output_funtion[self.current_state]
+            return True
+        return False
     
     def go_to_initial_state(self):
         self.current_state = self.start_state
 
     def get_output(self):
-        if type(self.output) == type(''):
-            self.output = self.output.split(';')[:-1]
-        return self.output
+        return 'Fita: '+self.output
         
     def run_with_word(self, word):
         self.go_to_initial_state()
@@ -58,6 +69,3 @@ class DFA:
     def run_with_letter(self, letter):
         self.transition_to_state_with_input(letter)
         return self.current_state
-
-    def __len__(self):
-        return len(self.states)
