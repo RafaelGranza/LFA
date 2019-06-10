@@ -6,12 +6,14 @@ from class_moore import Moore
 from utils import *
 
 valida_entrada = DFA(*read_quintuple_from_data('DFA'))
-fabrica1 = Factory('moore')
+fabrica1 = Factory('tipo_b')
+fabrica2 = Factory('tipo_w')
 
 word = input('Demanda: ')
-valida_entrada.run_with_word(word)
+if valida_entrada.run_with_word(word):
+    print("Demanda validada!\nTamanho da demanda:",len(valida_entrada.get_output()),"carros")
 
-maestro = Maestro([fabrica1])
+maestro = Maestro([fabrica1,fabrica2])
 maestro.set_words(valida_entrada.get_output())
 maestro.pooling()
-maestro.show_outputs()
+print(maestro.show_outputs())

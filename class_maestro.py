@@ -10,23 +10,26 @@ class Maestro:
             self.list_words[index].append(word)    
 
     def pooling(self):
-        controller = 1
+        controller,show = self.controller(True)
         while(self.remaing_words()):
             index = 0
             for words in self.list_words:
                 for word in words:
-                    if controller:
-                        controller = self.controller()
                     factory = self.factory_list[index]
                     line = factory.lines[factory.find_available()]
                     factory.set_busy()
-                    print("Mandando o carro {}".format(word))
                     line.automaton.run_with_word(word)
                     self.update_factories()
-                    print(factory)
+                    #print(factory)
                     words.pop(0)
+                    if controller:
+                        controller,show = self.controller(False)
+                    if show: print("Mandando o carro {}".format(word))
                     break
                 index += 1
+        for factory in self.factory_list:
+            while(factory.count_busy()):
+                self.update_factories()
     
     def find_factory(self, word):
         index = 0
@@ -45,19 +48,19 @@ class Maestro:
                 return True
         return False
 
-    def controller(self):
-        stop = input("Digite 'a' para avançar ao proximo estágio ou 'f' para acelerar ao final\n ->")
-        return 1 if stop == 'a' else 0
-
-    def menu(self):
-        op = input("Digite '1' para mostrar o estado atual de todas as linhas de produção\n"+
-                   "Digite '2 x' sendo x a linha que quer consultar\n"+
-                   "Digite '3' para consultar quantos carros foram produzidos até o momento\n ->")
-        if op == '1':
-            for factory in self.factory_list:
-                print(factory.actual_state())
+    def controller(self, menu):
+        if menu:
+            stop = ord(input("Digite 'a' para avançar ao proximo estágio ou 'f' para acelerar ao final\n ->"))%2
+            show = ord(input("Deseja acompanhar as entradas na linha? 's' ou 'n'\n ->"))%2
+        else:
+            stop = ord(input(" ->"))%2
+            show = 0
+        return stop,show
 
     def show_outputs(self):
+
+        ans = ''
         for factory in self.factory_list:
-            for line in factory.lines:
-                print('Fita:',line)
+            count = factory.count_produced()
+            ans += "Linha {}\n  Carros produzidos = {}\n".format(factory.name,count)
+        return ans

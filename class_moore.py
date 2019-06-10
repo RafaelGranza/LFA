@@ -1,3 +1,5 @@
+from random import randrange as error
+
 class Moore:
 
     current_state = None
@@ -12,7 +14,8 @@ class Moore:
                  start_state,
                  final_states,
                  output_alphabet,
-                 output_funtion):
+                 output_funtion,
+                 confiability):
         self.name = name
         self.alphabet = alphabet
         self.states = states
@@ -22,6 +25,7 @@ class Moore:
         self.current_state = start_state
         self.output_alphabet = output_alphabet
         self.output_funtion = output_funtion
+        self.confiability = confiability
         self.output = ''
 
     def __len__(self):
@@ -33,6 +37,10 @@ class Moore:
     def transition_to_state_with_input(self, letter):
         if self.valid:
             if ((self.current_state, letter) not in self.delta_function.keys()):
+                self.valid = False
+                return
+            if error(self.confiability) == 1:
+                self.output += 'e'
                 self.valid = False
                 return
             self.output += self.output_funtion[self.current_state]

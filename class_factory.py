@@ -9,6 +9,7 @@ class Factory:
         self.name = self.line.type
         self.lines = [Assembly_Line(assembly_type) for lines in range(len(self.line.automaton))]
         self.status = [0 for lines in range(len(self.line.automaton))]
+        self.produced = list()
     
     def __len__(self):
         return len(self.lines)
@@ -31,12 +32,25 @@ class Factory:
         for busy in range(len(self.status)):
             if self.status[busy]:
                 self.status[busy] -= 1
-            if self.status[busy] == 0:
-                self.lines[busy].automaton.output = ''
+            self.produced.append(self.lines[busy].automaton.output)
+            self.lines[busy].automaton.output = ''
 
     def count_busy(self):
         count = 0
         for busy in self.status:
             if busy:
                 count += 1
+        return count
+
+    def count_produced(self):
+        sucess = list()
+        count = 0
+        for output in self.produced:
+            if output:
+                if 'e' in output:
+                    self.errors += 1
+                else:
+                    sucess.append(output)
+                    count += 1
+        self.produced = sucess
         return count

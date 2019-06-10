@@ -35,5 +35,6 @@ def read_7_tuple_from_data(file):
             r_input = f.readline()
             r_input = (r_input.replace('\n','')).split('->')
             output_function[r_input[0]] = r_input[1]
+        confiabilitty = int(f.readline())
         f.close()
-        return name, alphabet, states, delta_function, start_state, final_states, output_alphabet, output_function
+        return name, alphabet, states, delta_function, start_state, final_states, output_alphabet, output_function, confiabilitty
