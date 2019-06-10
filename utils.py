@@ -38,3 +38,12 @@ def read_7_tuple_from_data(file):
         confiabilitty = int(f.readline())
         f.close()
         return name, alphabet, states, delta_function, start_state, final_states, output_alphabet, output_function, confiabilitty
+    
+def read_regex(file):
+        f = open(file, "r")
+        regex = f.readline().replace('\n','')
+        f.close()
+        return regex
+    
+def generate_graph():
+    

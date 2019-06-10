@@ -1,4 +1,4 @@
-from random import randrange as error
+from random import randint as error
 
 class Moore:
 
@@ -39,10 +39,9 @@ class Moore:
             if ((self.current_state, letter) not in self.delta_function.keys()):
                 self.valid = False
                 return
-            if error(self.confiability) == 1:
-                self.output += 'e'
-                self.valid = False
-                return
+            if error(0,self.confiability%100) == 1:
+                letter = 'e'
+#            generate_graph(self.current_letter)
             self.output += self.output_funtion[self.current_state]
             self.current_state = self.delta_function[(self.current_state, letter)]
             self.current_letter = letter

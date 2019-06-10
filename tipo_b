@@ -1,20 +1,35 @@
 b
 b L B P V @ &
-q0 q1t q1c q1m
-7
-q0->q1t:b
-q1t->q1c:L
-q1t->q1c:B
-q1t->q1c:P
-q1t->q1c:V
-q1c->q1m:@
-q1c->q1m:&
+q0 q1 q2 q3 q4 q5 q6 q7
+17
+q0->q1:b
+q1->q2:0
+q2->q3:@
+q2->q3:&
+q3->q4:1
+q4->q5:2
+q5->q6:L
+q5->q6:B
+q5->q6:P
+q5->q6:V
+q0->q7:e
+q1->q7:e
+q2->q7:e
+q3->q7:e
+q4->q7:e
+q5->q7:e
+q6->q7:e
 q0
-q1m
-0 1
-4
+q6 q7
+0 e
+8
 q0->0
-q1t->0
-q1c->0
-q1m->1
+q1->0
+q2->0
+q3->0
+q4->0
+q5->0
+q6->0
+q7->e
 100
+#capacidade da linha

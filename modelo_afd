@@ -1,0 +1,21 @@
+O modelo para escrita do automato AFD esta abaixo descrito
+
+#nome do automato
+#alfabeto
+#listagem dos estados
+#quantidade de transicoes (n)
+#as n transicoes no estilo de->para:letra
+#estado inicial
+#estado final
+
+exemplo:
+
+Teste
+a b c
+q0 q1 q2 q3
+3
+q0->q1:a
+q1->q2:b
+q2->q3:c
+q0
+q3

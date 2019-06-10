@@ -10,7 +10,7 @@ class Maestro:
             self.list_words[index].append(word)    
 
     def pooling(self):
-        controller,show = self.controller(True)
+        controller,show = self.controller(True,True)
         while(self.remaing_words()):
             index = 0
             for words in self.list_words:
@@ -22,9 +22,9 @@ class Maestro:
                     self.update_factories()
                     #print(factory)
                     words.pop(0)
-                    if controller:
-                        controller,show = self.controller(False)
                     if show: print("Mandando o carro {}".format(word))
+                    if controller:
+                        controller,show = self.controller(False,show)
                     break
                 index += 1
         for factory in self.factory_list:
@@ -48,17 +48,15 @@ class Maestro:
                 return True
         return False
 
-    def controller(self, menu):
+    def controller(self, menu, show):
         if menu:
             stop = ord(input("Digite 'a' para avançar ao proximo estágio ou 'f' para acelerar ao final\n ->"))%2
             show = ord(input("Deseja acompanhar as entradas na linha? 's' ou 'n'\n ->"))%2
         else:
             stop = ord(input(" ->"))%2
-            show = 0
         return stop,show
 
     def show_outputs(self):
-
         ans = ''
         for factory in self.factory_list:
             count = factory.count_produced()
