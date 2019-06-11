@@ -1,5 +1,5 @@
 n
-n B P V A $ #
+n B P V L @ #
 tipo roda mode porta estof cor erroT fixR fixM fixP fixE fixC fim
 30
 tipo->roda:n
@@ -7,10 +7,10 @@ tipo->erroT:e
 roda->mode:0
 roda->fixR:e
 fixR->mode:0
-mode->porta:$
+mode->porta:@
 mode->porta:#
 mode->fixM:e
-fixM->porta:$
+fixM->porta:@
 fixM->porta:#
 porta->estof:1
 porta->fixP:e
@@ -21,12 +21,12 @@ fixE->cor:2
 cor->fim:B
 cor->fim:V
 cor->fim:P
-cor->fim:A
+cor->fim:L
 cor->fixC:e
 fixC->fim:B
 fixC->fim:P
 fixC->fim:V
-fixC->fim:A
+fixC->fim:L
 fixR->fixR:e
 fixM->fixM:e
 fixP->fixP:e
@@ -49,5 +49,5 @@ fixP->e
 fixC->e
 fixE->e
 erroT->f
-85
+30
 #capacidade da linha
