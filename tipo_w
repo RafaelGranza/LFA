@@ -27,6 +27,11 @@ fixC->fim:B
 fixC->fim:P
 fixC->fim:V
 fixC->fim:A
+fixR->fixR:e
+fixM->fixM:e
+fixP->fixP:e
+fixE->fixE:e
+fixC->fixC:e
 tipo
 fim
 0 e s f
