@@ -1,20 +1,48 @@
 w
 w B P V A ! #
-q0 q2t q2c q2m
-7
-q0->q2t:w
-q2t->q2c:A
-q2t->q2c:B
-q2t->q2c:P
-q2t->q2c:V
-q2c->q2m:!
-q2c->q2m:#
-q0
-q2m
-0 1 
-4
-q0->0
-q2t->0
-q2c->0
-q2m->1
-100
+tipo roda mode porta estof cor erroT fixR fixM fixP fixE fixC fim
+25
+tipo->roda:w
+tipo->erroT:e
+roda->mode:0
+roda->fixR:e
+fixR->mode:0
+mode->porta:!
+mode->porta:#
+mode->fixM:e
+fixM->porta:!
+fixM->porta:#
+porta->estof:1
+porta->fixP:e
+fixP->estof:1
+estof->cor:2
+estof->fixE:e
+fixE->cor:2
+cor->fim:B
+cor->fim:V
+cor->fim:P
+cor->fim:A
+cor->fixC:e
+fixC->fim:B
+fixC->fim:P
+fixC->fim:V
+fixC->fim:A
+tipo
+fim
+0 e s f
+13
+tipo->0
+roda->0
+mode->0
+porta->0
+estof->0
+cor->0
+fim->s
+fixR->e
+fixM->e
+fixP->e
+fixC->e
+fixE->e
+erroT->f
+97
+#capacidade da linha
