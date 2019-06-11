@@ -1,1 +1,53 @@
-
+j
+j B P V Z @ #
+tipo roda mode porta estof cor erroT fixR fixM fixP fixE fixC fim
+30
+tipo->roda:j
+tipo->erroT:e
+roda->mode:0
+roda->fixR:e
+fixR->mode:0
+mode->porta:@
+mode->porta:#
+mode->fixM:e
+fixM->porta:@
+fixM->porta:#
+porta->estof:1
+porta->fixP:e
+fixP->estof:1
+estof->cor:2
+estof->fixE:e
+fixE->cor:2
+cor->fim:B
+cor->fim:V
+cor->fim:P
+cor->fim:Z
+cor->fixC:e
+fixC->fim:B
+fixC->fim:P
+fixC->fim:V
+fixC->fim:Z
+fixR->fixR:e
+fixM->fixM:e
+fixP->fixP:e
+fixE->fixE:e
+fixC->fixC:e
+tipo
+fim
+0 e s f
+13
+tipo->0
+roda->0
+mode->0
+porta->0
+estof->0
+cor->0
+fim->s
+fixR->e
+fixM->e
+fixP->e
+fixC->e
+fixE->e
+erroT->f
+85
+#capacidade da linha
