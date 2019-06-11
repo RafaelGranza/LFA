@@ -1,7 +1,7 @@
 w
 w B P V A ! #
 tipo roda mode porta estof cor erroT fixR fixM fixP fixE fixC fim
-25
+30
 tipo->roda:w
 tipo->erroT:e
 roda->mode:0
